@@ -13,15 +13,15 @@
 #		- Go
 #
 
-GET_DOCKER=0
-GET_LAZYDOCKER=0
-GET_GIT=0
-GET_GH_CLI=1
-GET_NEOVIM=0
-GET_TMUX=0
-GET_NODE=0
+GET_DOCKER=true
+GET_LAZYDOCKER=true
+GET_GIT=true
+GET_GH_CLI=true
+GET_NEOVIM=true
+GET_TMUX=true
+GET_NODE=true
 NODE_VERSION=22
-GET_GO=0
+GET_GO=true
 
 
 # 0. Updates
@@ -29,24 +29,24 @@ sudo apt-get update
 
 # 1. Docker
 ## Run the docker convenience script. More info: https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
-if [ "$GET_DOCKER" == "1" ]; then
+if [ "$GET_DOCKER" == true ]; then
 	curl -fsSL https://get.docker.com -o get-docker.sh
 	sudo sh ./get-docker.sh
 fi
 
 # 2. LazyDocker
-if [ "$GET_LAZYDOCKER" == "1" ]; then
+if [ "$GET_LAZYDOCKER" == true ]; then
 	curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 fi
 
 # 3. Git
-if [ "$GET_GIT" == "1" ]; then
+if [ "$GET_GIT" == true ]; then
 	sudo apt install git-all
 fi
 
 # 4. GH CLI
 
-if [ "$GET_GH_CLI" == "1" ]; then
+if [ "$GET_GH_CLI" == true ]; then
 	# https://github.com/cli/cli/blob/trunk/docs/install_linux.md
 	(type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
 		&& sudo mkdir -p -m 755 /etc/apt/keyrings \
@@ -62,17 +62,17 @@ if [ "$GET_GH_CLI" == "1" ]; then
 fi
 
 # 5. Neovim
-if [ "$GET_NEOVIM" == "1" ]; then
+if [ "$GET_NEOVIM" == true ]; then
 	sudo apt install neovim
 fi
 
 # 6. Tmux
-if [ "$GET_TMUX" == "1" ]; then
+if [ "$GET_TMUX" == true ]; then
 	sudo apt install tmux
 fi
 
 # 7. NodeJS
-if [ "$GET_NODE" == "1" ]; then
+if [ "$GET_NODE" == true ]; then
 	## Download and install nvm:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
